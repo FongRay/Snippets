@@ -1,0 +1,18 @@
+//
+//  common-def.pch
+//  Snippets
+//
+//  Created by Ray Fong on 2019/9/8.
+//  Copyright © 2019 YiMu. All rights reserved.
+//
+
+#ifndef common_def_pch
+#define common_def_pch
+
+// 只能选择一个 main 文件
+
+//#define _MAIN_BLOCK_
+//#define _MAIN_RUNTIME_
+#define _MAIN_CATEGORY_
+
+#endif /* common_def_pch */

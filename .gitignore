@@ -19,7 +19,6 @@ DerivedData
 *.xcuserstate
 xcuserdata/
 *.xccheckout
-contents.xcworkspacedata
 Products/
 out/
 .make_kb
