@@ -19,6 +19,7 @@
 		71C559912324355A00C89418 /* main-category.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C559902324355A00C89418 /* main-category.m */; };
 		71C55994232435BE00C89418 /* NSArray+c1.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C55993232435BE00C89418 /* NSArray+c1.m */; };
 		71C55997232435C700C89418 /* NSArray+c2.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C55996232435C700C89418 /* NSArray+c2.m */; };
+		71C5599A23313ACB00C89418 /* block-retain.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C5599923313ACB00C89418 /* block-retain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +60,8 @@
 		71C55993232435BE00C89418 /* NSArray+c1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+c1.m"; sourceTree = "<group>"; };
 		71C55995232435C700C89418 /* NSArray+c2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+c2.h"; sourceTree = "<group>"; };
 		71C55996232435C700C89418 /* NSArray+c2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+c2.m"; sourceTree = "<group>"; };
+		71C5599923313ACB00C89418 /* block-retain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "block-retain.m"; sourceTree = "<group>"; };
+		71C5599B23313C1300C89418 /* block-retain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "block-retain.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +120,10 @@
 		71C55970231FA65A00C89418 /* Snippets-Mac */ = {
 			isa = PBXGroup;
 			children = (
+				71C5599823313A8F00C89418 /* block */,
 				71C559812324324000C89418 /* category */,
 				71C5597E231FAFD700C89418 /* fishhook */,
 				71C55978231FA68700C89418 /* objc2cpp */,
-				71C55971231FA65A00C89418 /* main-block.m */,
 				71C5597F2324104800C89418 /* main-runtime.m */,
 				71C559822324329500C89418 /* common-def.pch */,
 			);
@@ -156,6 +159,16 @@
 				71C55996232435C700C89418 /* NSArray+c2.m */,
 			);
 			path = category;
+			sourceTree = "<group>";
+		};
+		71C5599823313A8F00C89418 /* block */ = {
+			isa = PBXGroup;
+			children = (
+				71C5599B23313C1300C89418 /* block-retain.cpp */,
+				71C55971231FA65A00C89418 /* main-block.m */,
+				71C5599923313ACB00C89418 /* block-retain.m */,
+			);
+			path = block;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +275,7 @@
 			files = (
 				71C559912324355A00C89418 /* main-category.m in Sources */,
 				71C55983232432B100C89418 /* main-block.m in Sources */,
+				71C5599A23313ACB00C89418 /* block-retain.m in Sources */,
 				71C55994232435BE00C89418 /* NSArray+c1.m in Sources */,
 				71C55997232435C700C89418 /* NSArray+c2.m in Sources */,
 				71C559802324104800C89418 /* main-runtime.m in Sources */,

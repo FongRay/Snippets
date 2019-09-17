@@ -19,6 +19,12 @@ int main(int argc, const char * argv[]) {
         // 但如果多个 framework 都实现了同一方法，结果是未知的
         // 总的来说，结果是 undefined，所以不要重写系统同名方法
         NSLog(@"%@", [array descriptionWithLocale:nil]);
+
+        NSString *str1 = @"hello1";
+        NSMutableString *str2 = @"hello2";
+        NSArray *test1 = @[str1, str2];
+        NSInteger idx = [test1 indexOfObject:str1];
+        NSLog(@"%p %p", str1, str2);
     }
 }
 

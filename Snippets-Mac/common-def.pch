@@ -12,7 +12,8 @@
 // 只能选择一个 main 文件
 
 //#define _MAIN_BLOCK_
+#define _MAIN_BLOCK_2_
 //#define _MAIN_RUNTIME_
-#define _MAIN_CATEGORY_
+//#define _MAIN_CATEGORY_
 
 #endif /* common_def_pch */
