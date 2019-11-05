@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23737DE7236AD7DF00D74AF8 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 23737DE6236AD7DF00D74AF8 /* fishhook.c */; };
 		23AB2E5E2283CA8C0074F7F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB2E5D2283CA8C0074F7F8 /* AppDelegate.m */; };
 		23AB2E612283CA8C0074F7F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB2E602283CA8C0074F7F8 /* ViewController.m */; };
 		23AB2E642283CA8C0074F7F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23AB2E622283CA8C0074F7F8 /* Main.storyboard */; };
@@ -14,8 +15,9 @@
 		23AB2E692283CA8E0074F7F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AB2E682283CA8E0074F7F8 /* Assets.xcassets */; };
 		23AB2E6C2283CA8E0074F7F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23AB2E6A2283CA8E0074F7F8 /* LaunchScreen.storyboard */; };
 		23AB2E6F2283CA8E0074F7F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB2E6E2283CA8E0074F7F8 /* main.m */; };
+		23DF91562371625300FFDFF7 /* CTBlockDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF91552371625300FFDFF7 /* CTBlockDescription.m */; };
 		71C559802324104800C89418 /* main-runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C5597F2324104800C89418 /* main-runtime.m */; };
-		71C55983232432B100C89418 /* main-block.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C55971231FA65A00C89418 /* main-block.m */; };
+		71C55983232432B100C89418 /* main-block.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C55971231FA65A00C89418 /* main-block.mm */; };
 		71C559912324355A00C89418 /* main-category.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C559902324355A00C89418 /* main-category.m */; };
 		71C55994232435BE00C89418 /* NSArray+c1.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C55993232435BE00C89418 /* NSArray+c1.m */; };
 		71C55997232435C700C89418 /* NSArray+c2.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C55996232435C700C89418 /* NSArray+c2.m */; };
@@ -35,6 +37,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		23737DE2236AD7DF00D74AF8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		23737DE3236AD7DF00D74AF8 /* fishhook.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fishhook.podspec; sourceTree = "<group>"; };
+		23737DE4236AD7DF00D74AF8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		23737DE5236AD7DF00D74AF8 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		23737DE6236AD7DF00D74AF8 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		23AB2E592283CA8C0074F7F8 /* Snippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AB2E5C2283CA8C0074F7F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		23AB2E5D2283CA8C0074F7F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -46,8 +53,10 @@
 		23AB2E6B2283CA8E0074F7F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23AB2E6D2283CA8E0074F7F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23AB2E6E2283CA8E0074F7F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		23DF91542371625300FFDFF7 /* CTBlockDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBlockDescription.h; sourceTree = "<group>"; };
+		23DF91552371625300FFDFF7 /* CTBlockDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBlockDescription.m; sourceTree = "<group>"; };
 		71C5596F231FA65A00C89418 /* Snippets-Mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Snippets-Mac"; sourceTree = BUILT_PRODUCTS_DIR; };
-		71C55971231FA65A00C89418 /* main-block.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "main-block.m"; sourceTree = "<group>"; };
+		71C55971231FA65A00C89418 /* main-block.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "main-block.mm"; sourceTree = "<group>"; };
 		71C55979231FA6A400C89418 /* block_1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = block_1.m; sourceTree = "<group>"; };
 		71C5597A231FA6A400C89418 /* block_2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = block_2.cpp; sourceTree = "<group>"; };
 		71C5597B231FA6A400C89418 /* main_1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main_1.cpp; sourceTree = "<group>"; };
@@ -145,6 +154,11 @@
 		71C5597E231FAFD700C89418 /* fishhook */ = {
 			isa = PBXGroup;
 			children = (
+				23737DE5236AD7DF00D74AF8 /* fishhook.h */,
+				23737DE6236AD7DF00D74AF8 /* fishhook.c */,
+				23737DE3236AD7DF00D74AF8 /* fishhook.podspec */,
+				23737DE4236AD7DF00D74AF8 /* LICENSE */,
+				23737DE2236AD7DF00D74AF8 /* README.md */,
 			);
 			path = fishhook;
 			sourceTree = "<group>";
@@ -164,8 +178,10 @@
 		71C5599823313A8F00C89418 /* block */ = {
 			isa = PBXGroup;
 			children = (
+				23DF91542371625300FFDFF7 /* CTBlockDescription.h */,
+				23DF91552371625300FFDFF7 /* CTBlockDescription.m */,
 				71C5599B23313C1300C89418 /* block-retain.cpp */,
-				71C55971231FA65A00C89418 /* main-block.m */,
+				71C55971231FA65A00C89418 /* main-block.mm */,
 				71C5599923313ACB00C89418 /* block-retain.m */,
 			);
 			path = block;
@@ -274,9 +290,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C559912324355A00C89418 /* main-category.m in Sources */,
-				71C55983232432B100C89418 /* main-block.m in Sources */,
+				23737DE7236AD7DF00D74AF8 /* fishhook.c in Sources */,
+				71C55983232432B100C89418 /* main-block.mm in Sources */,
 				71C5599A23313ACB00C89418 /* block-retain.m in Sources */,
 				71C55994232435BE00C89418 /* NSArray+c1.m in Sources */,
+				23DF91562371625300FFDFF7 /* CTBlockDescription.m in Sources */,
 				71C55997232435C700C89418 /* NSArray+c2.m in Sources */,
 				71C559802324104800C89418 /* main-runtime.m in Sources */,
 			);

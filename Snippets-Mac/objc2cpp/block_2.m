@@ -10,10 +10,9 @@
 #import <Foundation/Foundation.h>
 
 int main () {
-    void (^block)(int a, NSString *b) = ^(int a, NSString *b){
-        printf("Block !!");
-        NSLog(@"%d, %@", a, b);
+    void (^block)(...) = ^(...) {
+        NSLog(@"Block!");
     };
 
-    block(1, @"fuck");
+    block(1, @{}, @[@"666"], 999.9999);
 }

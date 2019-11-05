@@ -106,8 +106,8 @@ struct __AtAutoreleasePool {
 };
 
 #define __OFFSETOFIVAR__(TYPE, MEMBER) ((long long) &((TYPE *)0)->MEMBER)
-static __NSConstantStringImpl __NSConstantStringImpl__var_folders_7r_kf_jxsr53w3662_ttbkmjygh0000gn_T_block_2_360f98_mi_0 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"%d, %@",6};
-static __NSConstantStringImpl __NSConstantStringImpl__var_folders_7r_kf_jxsr53w3662_ttbkmjygh0000gn_T_block_2_360f98_mi_1 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"fuck",4};
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_tg_pfj0_gf954n4zw1ccj5bv3900000gn_T_block_2_bef792_mi_0 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"Block!",6};
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_tg_pfj0_gf954n4zw1ccj5bv3900000gn_T_block_2_bef792_mi_1 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"666",3};
 
 
 
@@ -98283,10 +98283,9 @@ struct __main_block_impl_0 {
     Desc = desc;
   }
 };
-static void __main_block_func_0(struct __main_block_impl_0 *__cself, int a, NSString *b) {
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
 
-        printf("Block !!");
-        NSLog((NSString *)&__NSConstantStringImpl__var_folders_7r_kf_jxsr53w3662_ttbkmjygh0000gn_T_block_2_360f98_mi_0, a, b);
+        NSLog((NSString *)&__NSConstantStringImpl__var_folders_tg_pfj0_gf954n4zw1ccj5bv3900000gn_T_block_2_bef792_mi_0);
     }
 
 static struct __main_block_desc_0 {
@@ -98294,8 +98293,8 @@ static struct __main_block_desc_0 {
   size_t Block_size;
 } __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
 int main () {
-    void (*block)(int a, NSString *b) = ((void (*)(int, NSString *))&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA));
+    void (*block)(...) = ((void (*)(...))&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA));
 
-    ((void (*)(__block_impl *, int, NSString *))((__block_impl *)block)->FuncPtr)((__block_impl *)block, 1, (NSString *)&__NSConstantStringImpl__var_folders_7r_kf_jxsr53w3662_ttbkmjygh0000gn_T_block_2_360f98_mi_1);
+    ((void (*)(__block_impl *))((__block_impl *)block)->FuncPtr)((__block_impl *)block, 1, ((NSDictionary *(*)(Class, SEL, ObjectType  _Nonnull const *, const id *, NSUInteger))(void *)objc_msgSend)(objc_getClass("NSDictionary"), sel_registerName("dictionaryWithObjects:forKeys:count:"), (const id *)__NSContainer_literal(0U).arr, (const id *)__NSContainer_literal(0U).arr, 0U), ((NSArray *(*)(Class, SEL, ObjectType  _Nonnull const * _Nonnull, NSUInteger))(void *)objc_msgSend)(objc_getClass("NSArray"), sel_registerName("arrayWithObjects:count:"), (const id *)__NSContainer_literal(1U, (NSString *)&__NSConstantStringImpl__var_folders_tg_pfj0_gf954n4zw1ccj5bv3900000gn_T_block_2_bef792_mi_1).arr, 1U), 999.99990000000003);
 }
 static struct IMAGE_INFO { unsigned version; unsigned flag; } _OBJC_IMAGE_INFO = { 0, 2 };
