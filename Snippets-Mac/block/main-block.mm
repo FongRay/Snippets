@@ -32,7 +32,6 @@
 // block(123, @"aaa");
 // --- 这里应该输出 "123, aaa" 和 "block invoke"
 //
-
 /*
  void HookBlockToPrintArguments(id block) {
  }
@@ -49,7 +48,7 @@
 // --- END --- //
 
 // 注释下面这行，可以 hook 所有类型的 block
-//#define SIMPLE_IMPL_HOOK
+#define SIMPLE_IMPL_HOOK
 
 #ifdef _MAIN_BLOCK_
 struct __block_impl {
