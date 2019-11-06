@@ -1,9 +1,9 @@
 //
 //  main.m
-//  omeD
+//  Snippets-Mac
 //
-//  Created by Ray Fong on 2019/9/1.
-//  Copyright © 2019 Ray Fong. All rights reserved.
+//  Created by Yimu on 2019/9/1.
+//  Copyright © 2019 Yimu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,8 +12,44 @@
 #import "fishhook.h"
 #import "CTBlockDescription.h"
 
+// --- 关于 block 的几个面试题 (by sunyuansunnyxx@didichuxing.com) --- //
+
+/*** Problem #1 ***/
+// 实现以下函数，将 block 的实现修改成 NSLog(@"Hello world"),
+// 也就是说，在调用完这个函数后调用 block() 时，将不调用原始实现，而是打印出 "Hello world"
+/*
+ void HookBlockToPrintHelloWorld(id block) {
+ }
+ */
+
+/*** Problem #2 ***/
+// 实现以下函数，将 block 的实现修改成打印所有入参，并调用原始实现，
+// 比如
+// void (^block)(int a, NSString *b) = ^(int a, NSString *b) {
+//     NSLog(@"block invoke");
+// }
+// HookBlockToPrintArguments(block);
+// block(123, @"aaa");
+// --- 这里应该输出 "123, aaa" 和 "block invoke"
+//
+
+/*
+ void HookBlockToPrintArguments(id block) {
+ }
+ */
+
+
+/*** Problem #3 ***/
+// 实现以下函数，使得调用这个函数这个，后面创建的任意 block 都能自动实现第2题的功能
+/*
+ void HookEveryBlockToPrintArguments(void) {
+ }
+ */
+
+// --- END --- //
+
 // 注释下面这行，可以 hook 所有类型的 block
-#define SIMPLE_IMPL_HOOK
+//#define SIMPLE_IMPL_HOOK
 
 #ifdef _MAIN_BLOCK_
 struct __block_impl {
@@ -44,7 +80,7 @@ struct __my_block_impl_x {
 #pragma mark - Problem #1
 
 static void __my_block_func_0() {
-    NSLog(@"⚔️[hooked] Hello world");
+    NSLog(@"<Hooked>\nHello world");
 }
 
 void HookBlockToPrintHelloWorld(id block) {
@@ -71,7 +107,7 @@ static __my_block_impl_x *origin_block;
 
 #ifdef SIMPLE_IMPL_HOOK
 static void __my_block_func_1(void *f, int a, NSString *b) {
-    NSLog(@"⚔️[hooked] %d %@", a, b);
+    NSLog(@"<Hooked> %d %@", a, b);
     origin_block(f, a, b);
 }
 #else
@@ -99,7 +135,7 @@ static void __my_block_func_1(struct __my_block_impl_x *__cself, ...) {
         [paramArray addObject:str];
     }
     NSInteger paramCount = 1;
-    NSMutableString *paramLog = [NSMutableString stringWithString:@"⚔️[hooked]\n"];
+    NSMutableString *paramLog = [NSMutableString stringWithString:@"<Hooked>\n"];
     // Objective-C type encodings https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
     // String Format Specifiers https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
     static NSDictionary *type_code = @{@"c": @"char",
@@ -134,7 +170,7 @@ static void __my_block_func_1(struct __my_block_impl_x *__cself, ...) {
                                          @"Q": @"%llu",
                                          @"f": @"%f",
                                          @"d": @"%lf",
-                                         @"B": @"%d",
+                                         @"B": @"%@",
 //                                         @"v": @"%@",
                                          @"*": @"%s",
                                          @"@": @"%@",
@@ -221,7 +257,7 @@ static void __my_block_func_1(struct __my_block_impl_x *__cself, ...) {
         // bool (_Bool) <! NOT BOOL -> BOOL is char
         else if ([varType isEqualToString:@"B"]) {
             BOOL arg = va_arg(args, int);
-            [paramLog appendFormat:fmt, arg];
+            [paramLog appendFormat:fmt, arg ? @"YES": @"NO"];
             [blockInvocation setArgument:&arg atIndex:(paramCount)];
         }
         // void
@@ -242,7 +278,13 @@ static void __my_block_func_1(struct __my_block_impl_x *__cself, ...) {
         else if ([varType isEqualToString:@"@"] ||
                  varType.length > 2) {
             id arg = va_arg(args, id);
-            [paramLog appendFormat:@"<%ld> [%@] %@\n", paramCount, [arg class], arg];
+            if ([varType isEqualToString:@"@\"NSArray\""]) {
+                [paramLog appendFormat:@"<%ld> [%@] (\n\t%@\n)\n",
+                 paramCount, [arg class],
+                 [[arg valueForKey:@"description"] componentsJoinedByString:@",\n\t"]];
+            } else {
+                [paramLog appendFormat:@"<%ld> [%@] %@\n", paramCount, [arg class], arg];
+            }
             [blockInvocation setArgument:&arg atIndex:(paramCount)];
         }
         // Class
@@ -315,6 +357,13 @@ void HookEveryBlockToPrintArguments(void) {
     rebind_symbols(r, 1);
 }
 
+@interface MyObj : NSObject
+@property (nonatomic, strong) NSArray *temp;
+@property (nonatomic, assign) CGRect rt;
+@end
+@implementation MyObj
+@end
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        if (sizeof(void*) == 4) {
@@ -330,13 +379,13 @@ int main(int argc, const char * argv[]) {
 //        NSLog(@"object: %s", [foo objCType]);
         
         void (^blk1)(void) = ^{
-            NSLog(@"🔓[block1] invoke!");
+            NSLog(@"[Block1] invoke!");
         };
         HookBlockToPrintHelloWorld(blk1);
         blk1();
 
         void (^blk2)(int a, NSString *b) = ^(int a, NSString *b) {
-            NSLog(@"🔓[block2] invoke! %d %@", a, b);
+            NSLog(@"[Block2] invoke! %d %@", a, b);
         };
         HookBlockToPrintArguments(blk2);
         blk2(123, @"aaa");
@@ -345,26 +394,36 @@ int main(int argc, const char * argv[]) {
 #ifndef SIMPLE_IMPL_HOOK
         void (^blk3)(char a, int b, short c, long d, long long e, unsigned char f, unsigned int g,
                     unsigned short h, unsigned long i, unsigned long long j,
-                    float k, double l, bool m, char *n, NSArray *o, Class p, SEL q) =
+                    float k, double l, bool m, char *n, NSArray *o, NSMutableDictionary *p, Class q, SEL r, id s) =
             ^(char a, int b, short c, long d, long long e, unsigned char f, unsigned int g,
               unsigned short h, unsigned long i, unsigned long long j,
-              float k, double l, bool m, char *n, NSArray *o, Class p, SEL q) {
-                NSLog(@"🔓[block3] invoke!\n%c %d %hd %ld %lld %c %u %hu %lu %llu %f %lf %d %s %@ %@ %s",
-                      a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, sel_getName(q));
+              float k, double l, bool m, char *n, NSArray *o, NSMutableDictionary *p, Class q, SEL r, id s) {
+//                NSLog(@"[Block3] invoke!\n%@ %f", [o objectAtIndex:2], [(MyObj *)s rt].size.height);
+                NSLog(@"[Block3] invoke!\n"
+                      "%c %d %hd %ld %lld %c %u %hu %lu %llu"
+                      "%f %lf %d %s\n%@\n%@\n%@ %s %@",
+                      a, b, c, d, e, f, g, h, i, j,
+                      k, l, m, n, o, p, q, sel_getName(r), s);
         };
-        char ch[] = "hello world";
-        SEL s = @selector(HookBlockToPrintArguments);
+        char ch[] = "hello";
+        SEL r = @selector(setHTTPCookieStorage:);
+//        NSArray *o = @[@1, @2, @"hello", @(3.14)];
+        NSMutableArray *o = [NSMutableArray arrayWithArray:@[@1, @2, @"hello", @(3.14)]];
+        NSDictionary *p = @{@"1": @(2), @"2": @[], @"3": @(2.33)};
+        MyObj *s = [MyObj new];
+        s.temp = [o copy];
+        s.rt = CGRectMake(0, 0, 100, 100);
         blk3('a', 'b', 'c', 400, 500, 'f', 700, 800, 900, 1000,
-             11.11, 12.222222, true, ch, @[@1, @2, @3],
-             [NSDictionary class], s);
+             11.11, 12.222222, true, ch, o,
+             [NSMutableDictionary dictionaryWithDictionary:p], [NSDictionary class], r, s);
 #endif
         
         void (^blk4)(int a, NSString *b) = ^(int a, NSString *b) {
-            NSLog(@"🔓[block4] invoke! %d %@", a, b);
+            NSLog(@"[Block4] invoke! %d %@", a, b);
         };
         blk4(44, @"555");
         void (^blk5)(int a, NSString *b) = ^(int a, NSString *b) {
-            NSLog(@"🔓[block5] invoke! %d %@", a, b);
+            NSLog(@"[Block5] invoke! %d %@", a, b);
         };
         blk5(555, @"6667");
     }
